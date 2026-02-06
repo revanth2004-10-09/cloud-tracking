@@ -1,0 +1,1449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>🚀 30-Day Azure Cloud Mastery - Accenture ASE Tracker Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #0f172a;
+      --glass: rgba(255,255,255,0.05);
+      --glass-dark: rgba(15,23,42,0.8);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border-glass: rgba(148,163,184,0.2);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --purple: #8b5cf6;
+      --danger: #ef4444;
+      --gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
+      --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: auto;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      background: rgba(10,14,26,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .live-clock {
+      background: var(--glass-dark);
+      padding: 12px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .clock-date {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .clock-time {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      flex: 1;
+      min-width: 600px;
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .control-input {
+      background: var(--glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .control-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+
+    .mode-toggle {
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .mode-toggle.active {
+      background: rgba(16,185,129,0.2) !important;
+      border-color: var(--success) !important;
+      color: var(--success) !important;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border: 1px solid var(--border-glass);
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    /* OVERALL STATS DASHBOARD */
+    .stats-dashboard {
+      background: var(--glass-dark);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 24px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card.complete {
+      background: rgba(16,185,129,0.2);
+      border: 1px solid rgba(16,185,129,0.4);
+    }
+
+    .stat-card.week {
+      background: rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.4);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CONTENT */
+    .page {
+      display: none;
+      animation: slideIn 0.4s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-section {
+      padding: 40px 0 100px 0;
+    }
+
+    .weeks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .week-card {
+      background: var(--glass-dark);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: visible;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .week-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 24px 24px 0 0;
+    }
+
+    .week-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+      border-color: rgba(59,130,246,0.3);
+    }
+
+    .week-card.complete {
+      border-color: var(--success);
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.3);
+    }
+
+    .week-card.complete::before {
+      background: var(--gradient-gold);
+    }
+
+    .week-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 20px;
+    }
+
+    .week-info h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .week-icon {
+      font-size: 1.8rem;
+    }
+
+    .week-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .week-stats {
+      text-align: right;
+    }
+
+    .progress-badge {
+      background: rgba(59,130,246,0.2);
+      color: var(--accent-blue);
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid rgba(59,130,246,0.3);
+      margin-bottom: 12px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(30,41,59,0.6);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      margin: 16px 0;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient);
+      width: 0%;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .tasks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .task-item {
+      background: rgba(20,30,50,0.6);
+      border: 1px solid rgba(59,130,246,0.15);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .task-item:hover {
+      border-color: var(--accent-blue);
+      background: rgba(20,30,50,0.8);
+      transform: translateX(4px);
+    }
+
+    .task-item.complete {
+      background: rgba(16,185,129,0.15);
+      border-color: rgba(16,185,129,0.4);
+      animation: celebrate 0.6s ease;
+    }
+
+    @keyframes celebrate {
+      0% { transform: scale(0.95); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .task-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .task-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      border: 2px solid var(--accent-blue);
+      background: transparent;
+      flex-shrink: 0;
+      cursor: pointer;
+      appearance: none;
+      margin-top: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .task-checkbox:checked {
+      background: var(--success);
+      border-color: var(--success);
+      transform: scale(1.1);
+    }
+
+    .task-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .task-details {
+      flex: 1;
+    }
+
+    .task-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.4;
+      transition: all 0.2s ease;
+    }
+
+    .task-title.editing {
+      background: rgba(59,130,246,0.1);
+      border-radius: 8px;
+      padding: 4px 8px;
+      border: 1px solid rgba(59,130,246,0.3);
+      outline: none;
+    }
+
+    .task-title.complete {
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
+    .task-hint {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      transition: all 0.2s ease;
+    }
+
+    .task-hint.complete {
+      opacity: 0.6;
+    }
+
+    .task-actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .task-item:hover .task-actions {
+      opacity: 1;
+    }
+
+    .action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 16px;
+    }
+
+    .btn-edit {
+      background: rgba(59,130,246,0.2);
+      color: var(--accent-blue);
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .btn-add {
+      background: rgba(16,185,129,0.2);
+      color: var(--success);
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+
+    .btn-delete {
+      background: rgba(239,68,68,0.2);
+      color: var(--danger);
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    .btn-edit:hover, .btn-add:hover, .btn-delete:hover {
+      transform: scale(1.1);
+    }
+
+    /* DAILY STREAK */
+    .streak-banner {
+      background: var(--gradient-gold);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.9; }
+    }
+
+    /* HISTORY PAGE */
+    .history-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .history-card {
+      background: var(--glass-dark);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .history-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .history-date {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+    }
+
+    .history-stats {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin: 16px 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number-small {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--success);
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--glass-dark);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      backdrop-filter: blur(20px);
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .modal-input {
+      width: 100%;
+      background: var(--glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(59,130,246,0.4);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .controls-grid {
+        grid-template-columns: 1fr;
+        min-width: auto;
+      }
+      .week-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .week-stats {
+        text-align: left;
+      }
+      .stats-dashboard {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-secondary);
+    }
+
+    .no-data .emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-content">
+        <div class="branding">
+          <div class="logo">☁️ Cloud Mastery Pro</div>
+          <div class="tagline">Accenture ASE • 30-Day Challenge • Enhanced</div>
+        </div>
+
+        <div class="live-clock">
+          <div class="clock-date" id="clockDate">Friday, February 6, 2026</div>
+          <div class="clock-time" id="clockTime">02:43:00 AM IST</div>
+        </div>
+
+        <div class="controls-grid">
+          <div class="control-item">
+            <label class="control-label">📅 Study Date</label>
+            <input type="date" id="studyDate" class="control-input">
+          </div>
+          <div class="control-item">
+            <label class="control-label">🎯 Filter Day</label>
+            <select id="dayFilter" class="control-input">
+              <option value="all">All Days</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label class="control-label">⚙️ Mode</label>
+            <button id="editModeBtn" class="control-input mode-toggle">✏️ Study Mode</button>
+          </div>
+          <div class="control-item">
+            <label class="control-label">📊 View</label>
+            <div class="nav-buttons">
+              <button class="nav-btn active" data-page="planner">📅 Dashboard</button>
+              <button class="nav-btn" data-page="history">📈 Analytics</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content-section">
+      <div id="planner" class="page active">
+        <div id="statsDashboard" class="stats-dashboard"></div>
+        <div id="streakBanner" class="streak-banner" style="display: none;"></div>
+        <div class="weeks-container" id="weeksContainer"></div>
+      </div>
+      <div id="history" class="page"></div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Edit Task</div>
+      </div>
+      <input type="text" id="modalInput" class="modal-input" placeholder="Enter new task title...">
+      <textarea id="modalHint" class="modal-input" placeholder="Task hint / notes..." rows="3"></textarea>
+      <div class="modal-actions">
+        <button id="modalSave" class="btn-primary">💾 Save Changes</button>
+        <button id="modalCancel" class="btn-secondary">❌ Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFETTI -->
+  <div id="confetti" class="confetti"></div>
+
+  <script>
+    // ENHANCED 30-DAY AZURE CLOUD CHALLENGE WITH REAL-TIME PROGRESS
+    const cloudChallenge = {
+      week1: {
+        title: "Week 1: Cloud Fundamentals", 
+        subtitle: "Days 1-7 • Foundation Building",
+        icon: "📚",
+        tasks: [
+          {day:1, title:"What is Cloud Computing?", hint:"Definition, service models, real examples (Netflix, Google Drive)"},
+          {day:1, title:"Why Companies Use Cloud", hint:"Cost savings, scalability, global reach, reliability"},
+          {day:2, title:"On-Premise vs Cloud", hint:"Create comparison table with pros/cons"},
+          {day:3, title:"IaaS, PaaS, SaaS Models", hint:"3 Azure examples each (VM, App Service, Office 365)"},
+          {day:3, title:"Public/Private/Hybrid Cloud", hint:"Deployment models + use cases"},
+          {day:4, title:"Regions & Availability Zones", hint:"Why geo-redundancy matters"},
+          {day:4, title:"High Availability Concepts", hint:"99.99% SLA = business continuity"},
+          {day:5, title:"Cloud Security Basics", hint:"CIA triad, common threats, encryption"},
+          {day:5, title:"Shared Responsibility Model", hint:"Draw Azure responsibility diagram"},
+          {day:6, title:"Week 1 Revision", hint:"Flashcards for all key terms"},
+          {day:7, title:"Explain Cloud in Own Words", hint:"Practice 2-minute explanation"}
+        ]
+      },
+      week2: {
+        title: "Week 2: Azure Hands-On", 
+        subtitle: "Days 8-14 • Core Services",
+        icon: "🧪",
+        tasks: [
+          {day:8, title:"Create FREE Azure Account", hint:"azure.microsoft.com/free → $200 credit"},
+          {day:8, title:"Azure Portal Navigation", hint:"Dashboard, search, resource groups"},
+          {day:9, title:"Create Virtual Machine", hint:"B1s size, Ubuntu/Windows, RDP/SSH access"},
+          {day:9, title:"VM Lifecycle (Stop/Delete)", hint:"Monitor billing impact"},
+          {day:10, title:"Blob Storage Account", hint:"Create storage → containers → blobs"},
+          {day:10, title:"File Upload/Download", hint:"Test public vs private access"},
+          {day:11, title:"Virtual Network Basics", hint:"VNet, subnets, NSG concepts"},
+          {day:12, title:"Azure IAM - RBAC", hint:"Owner vs Contributor vs Reader roles"},
+          {day:13, title:"IAM Role Assignments", hint:"Practice assigning roles to users"},
+          {day:14, title:"Recreate VM + Storage", hint:"From scratch, no notes → muscle memory"},
+          {day:14, title:"Week 2 Hands-On Review", hint:"Document your Azure journey"}
+        ]
+      },
+      week3: {
+        title: "Week 3: Enterprise Cloud", 
+        subtitle: "Days 15-21 • Production Ready",
+        icon: "💼",
+        tasks: [
+          {day:15, title:"Scalability & Elasticity", hint:"Vertical vs horizontal scaling patterns"},
+          {day:15, title:"Auto-Scaling Rules", hint:"CPU/memory-based scaling policies"},
+          {day:16, title:"Load Balancer Concepts", hint:"Azure LB, Application Gateway"},
+          {day:17, title:"Azure Monitor & Alerts", hint:"Metrics, logs, application insights"},
+          {day:18, title:"Cloud Cost Management", hint:"Cost analysis, budgets, reservations"},
+          {day:19, title:"Deploy Web App to VM", hint:"Static site via RDP/SFTP"},
+          {day:20, title:"High Availability Design", hint:"Multi-zone VM deployment"},
+          {day:21, title:"Architecture Diagram", hint:"Draw complete cloud solution"}
+        ]
+      },
+      week4: {
+        title: "Week 4: ASE Job Ready", 
+        subtitle: "Days 22-30 • Interview Prep",
+        icon: "🚀",
+        tasks: [
+          {day:22, title:"Git Complete Workflow", hint:"Clone, branch, commit, push, PR"},
+          {day:23, title:"CI/CD Pipeline Concepts", hint:"Azure DevOps/GitHub Actions flow"},
+          {day:24, title:"Docker Fundamentals", hint:"Containers vs VMs, Dockerfile basics"},
+          {day:25, title:"Cloud Security Best Practices", hint:"Zero Trust, least privilege, encryption"},
+          {day:26, title:"Azure Well-Architected Framework", hint:"Reliability, security, cost pillars"},
+          {day:27, title:"30 Mock Interview Questions", hint:"Technical + behavioral scenarios"},
+          {day:28, title:"Full System Revision", hint:"Week 1-4 complete review"},
+          {day:29, title:"Final Practice Interview", hint:"30-minute mock with timer"},
+          {day:30, title:"🎉 ASE Ready Celebration!", hint:"Portfolio review + confidence boost"}
+        ]
+      }
+    };
+
+    let editMode = false;
+    let editingTaskId = null;
+    const weeks = Object.keys(cloudChallenge);
+
+    // DOM Elements
+    const studyDate = document.getElementById('studyDate');
+    const dayFilter = document.getElementById('dayFilter');
+    const editModeBtn = document.getElementById('editModeBtn');
+    const planner = document.getElementById('planner');
+    const history = document.getElementById('history');
+    const clockDate = document.getElementById('clockDate');
+    const clockTime = document.getElementById('clockTime');
+    const weeksContainer = document.getElementById('weeksContainer');
+    const statsDashboard = document.getElementById('statsDashboard');
+    const streakBanner = document.getElementById('streakBanner');
+    const taskModal = document.getElementById('taskModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalInput = document.getElementById('modalInput');
+    const modalHint = document.getElementById('modalHint');
+    const modalSave = document.getElementById('modalSave');
+    const modalCancel = document.getElementById('modalCancel');
+    const confetti = document.getElementById('confetti');
+
+    function init() {
+      setDefaultDate();
+      populateDayFilter();
+      renderPlanner();
+      attachEventListeners();
+      updateClock();
+      setInterval(updateClock, 1000);
+      updateStatsDashboard();
+      checkStreak();
+    }
+
+    function setDefaultDate() {
+      const today = new Date();
+      studyDate.value = today.toISOString().split('T')[0];
+    }
+
+    function populateDayFilter() {
+      for(let i = 1; i <= 30; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `Day ${i}`;
+        dayFilter.appendChild(option);
+      }
+    }
+
+    function getDateKey() {
+      return studyDate.value;
+    }
+
+    function saveTaskState(taskId, checked, title = null, hint = null) {
+      const dateKey = getDateKey();
+      localStorage.setItem(`cloud-${dateKey}-${taskId}-checked`, checked ? 'true' : 'false');
+      if (title !== null) localStorage.setItem(`cloud-${dateKey}-${taskId}-title`, title);
+      if (hint !== null) localStorage.setItem(`cloud-${dateKey}-${taskId}-hint`, hint);
+    }
+
+    function loadTaskState(taskId) {
+      const dateKey = getDateKey();
+      return localStorage.getItem(`cloud-${dateKey}-${taskId}-checked`) === 'true';
+    }
+
+    function loadTaskTitle(taskId, defaultTitle) {
+      const dateKey = getDateKey();
+      return localStorage.getItem(`cloud-${dateKey}-${taskId}-title`) || defaultTitle;
+    }
+
+    function loadTaskHint(taskId, defaultHint) {
+      const dateKey = getDateKey();
+      return localStorage.getItem(`cloud-${dateKey}-${taskId}-hint`) || defaultHint;
+    }
+
+    function updateStatsDashboard() {
+      const totalTasks = Object.values(cloudChallenge).reduce((acc, week) => acc + week.tasks.length, 0);
+      const completedTasks = getTotalCompletedTasks();
+      const completedWeeks = weeks.filter(weekId => isWeekComplete(weekId)).length;
+      
+      statsDashboard.innerHTML = `
+        <div class="stat-card ${completedTasks === totalTasks ? 'complete' : ''}">
+          <div class="stat-number">${completedTasks}</div>
+          <div class="stat-label">Tasks Complete</div>
+          <div class="progress-text">${Math.round((completedTasks/totalTasks)*100)}%</div>
+        </div>
+        <div class="stat-card week">
+          <div class="stat-number">${completedWeeks}</div>
+          <div class="stat-label">Weeks Complete</div>
+          <div class="progress-text">${Math.round((completedWeeks/4)*100)}%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">${getCurrentStreak()}</div>
+          <div class="stat-label">Day Streak</div>
+          <div class="progress-text">🔥 Keep Going!</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">${getTotalStudyDays()}</div>
+          <div class="stat-label">Study Days</div>
+          <div class="progress-text">Consistency Wins</div>
+        </div>
+      `;
+    }
+
+    function getTotalCompletedTasks() {
+      let total = 0;
+      weeks.forEach(weekId => {
+        const checkboxes = document.querySelectorAll(`#tasks-${weekId} .task-checkbox`);
+        total += Array.from(checkboxes).filter(cb => cb.checked).length;
+      });
+      return total;
+    }
+
+    function isWeekComplete(weekId) {
+      const checkboxes = document.querySelectorAll(`#tasks-${weekId} .task-checkbox`);
+      const total = checkboxes.length;
+      const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+      return total > 0 && completed === total;
+    }
+
+    function getCurrentStreak() {
+      const dateKey = getDateKey();
+      let streak = 0;
+      const todayKey = studyDate.value;
+      for (let i = 0; i < 30; i++) {
+        const checkDate = new Date(new Date(todayKey) - i * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        if (localStorage.getItem(`cloud-${checkDate}-activity`) === 'true') {
+          streak++;
+        } else {
+          break;
+        }
+      }
+      return streak;
+    }
+
+    function getTotalStudyDays() {
+      let count = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('cloud-') && key.endsWith('-activity')) {
+          count++;
+        }
+      }
+      return count;
+    }
+
+    function checkStreak() {
+      const streak = getCurrentStreak();
+      if (streak >= 3) {
+        streakBanner.textContent = `🔥 ${streak}-Day Streak! You're crushing it!`;
+        streakBanner.style.display = 'block';
+      } else {
+        streakBanner.style.display = 'none';
+      }
+    }
+
+    function renderPlanner() {
+      weeksContainer.innerHTML = `
+        ${weeks.map(weekId => createWeekCard(weekId)).join('')}
+      `;
+      attachTaskListeners();
+      updateProgressBars();
+      filterByDay();
+      updateStatsDashboard();
+    }
+
+    function createWeekCard(weekId) {
+      const week = cloudChallenge[weekId];
+      const isComplete = isWeekComplete(weekId);
+      return `
+        <div class="week-card ${isComplete ? 'complete' : ''}" data-week="${weekId}">
+          <div class="week-header">
+            <div class="week-info">
+              <h3>
+                <span class="week-icon">${week.icon}</span>
+                ${week.title}
+              </h3>
+              <div class="week-subtitle">${week.subtitle}</div>
+            </div>
+            <div class="week-stats">
+              <div class="progress-badge" id="count-${weekId}">0/0 tasks</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-${weekId}"></div>
+              </div>
+              <div class="progress-text">
+                <span id="progress-text-${weekId}">0%</span>
+                <span>1-2 hrs daily</span>
+              </div>
+            </div>
+          </div>
+          <div class="tasks-list" id="tasks-${weekId}">
+            ${week.tasks.map((task, index) => createTaskHTML(weekId, task, index)).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function createTaskHTML(weekId, task, index) {
+      const taskId = `${weekId}-t${index}`;
+      return `
+        <div class="task-item" data-task-id="${taskId}" data-day="${task.day}">
+          <div class="task-content">
+            <input type="checkbox" class="task-checkbox" id="${taskId}">
+            <div class="task-details">
+              <div class="task-title" data-task-id="${taskId}" contenteditable="false">${loadTaskTitle(taskId, task.title)}</div>
+              <div class="task-hint" data-task-id="${taskId}">${loadTaskHint(taskId, task.hint)}</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn btn-edit" data-task-id="${taskId}" title="Edit Task">✏️</button>
+              <button class="action-btn btn-add" data-week="${weekId}" data-day="${task.day}">+</button>
+              <button class="action-btn btn-delete" data-task-id="${taskId}">×</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateProgressBars() {
+      weeks.forEach(weekId => {
+        const checkboxes = document.querySelectorAll(`#tasks-${weekId} .task-checkbox`);
+        const total = checkboxes.length;
+        const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+        const percentage = total ? Math.round((completed / total) * 100) : 0;
+
+        const progressEl = document.getElementById(`progress-${weekId}`);
+        const textEl = document.getElementById(`progress-text-${weekId}`);
+        const countEl = document.getElementById(`count-${weekId}`);
+        
+        if (progressEl) progressEl.style.width = `${percentage}%`;
+        if (textEl) textEl.textContent = `${percentage}%`;
+        if (countEl) countEl.textContent = `${completed}/${total} tasks`;
+      });
+    }
+
+    function attachTaskListeners() {
+      // Checkboxes with celebration
+      document.querySelectorAll('.task-checkbox').forEach(cb => {
+        cb.checked = loadTaskState(cb.id);
+        if (cb.checked) {
+          cb.closest('.task-item').classList.add('complete');
+        }
+        
+        cb.addEventListener('change', () => {
+          const taskItem = cb.closest('.task-item');
+          saveTaskState(cb.id, cb.checked);
+          
+          if (cb.checked) {
+            taskItem.classList.add('complete');
+            celebrateCompletion();
+            localStorage.setItem(`cloud-${getDateKey()}-activity`, 'true');
+          } else {
+            taskItem.classList.remove('complete');
+          }
+          
+          updateProgressBars();
+          updateStatsDashboard();
+          checkStreak();
+        });
+      });
+
+      // Edit titles
+      document.querySelectorAll('.task-title').forEach(title => {
+        const taskId = title.dataset.taskId;
+        title.textContent = loadTaskTitle(taskId, title.textContent);
+        
+        title.addEventListener('input', () => {
+          if (editMode) {
+            saveTaskState(taskId, loadTaskState(taskId), title.textContent);
+          }
+        });
+      });
+
+      // Edit hints
+      document.querySelectorAll('.task-hint').forEach(hint => {
+        const taskId = hint.dataset.taskId;
+        hint.textContent = loadTaskHint(taskId, hint.textContent);
+      });
+
+      // Edit buttons
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!editMode) {
+            alert('🔓 Enable Edit Mode first!');
+            return;
+          }
+          editingTaskId = btn.dataset.taskId;
+          openModal(editingTaskId);
+        });
+      });
+
+      // Add buttons
+      document.querySelectorAll('.btn-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!editMode) {
+            alert('🔓 Enable Edit Mode first!');
+            return;
+          }
+          const weekId = btn.dataset.week;
+          const day = btn.dataset.day;
+          editingTaskId = 'new';
+          modalTitle.textContent = `New Task - Day ${day}`;
+          modalInput.value = '';
+          modalHint.value = 'Custom task - add your notes here!';
+          taskModal.classList.add('active');
+        });
+      });
+
+      // Delete buttons
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!editMode) {
+            alert('🔓 Enable Edit Mode first!');
+            return;
+          }
+          if (confirm('Delete this task permanently?')) {
+            const taskId = btn.dataset.taskId;
+            const [weekId, , index] = taskId.split('-');
+            const idx = parseInt(index);
+            cloudChallenge[weekId].tasks.splice(idx, 1);
+            renderPlanner();
+          }
+        });
+      });
+    }
+
+    function openModal(taskId) {
+      editingTaskId = taskId;
+      const [weekId, , index] = taskId.split('-');
+      const taskIndex = parseInt(index);
+      const task = cloudChallenge[weekId].tasks[taskIndex];
+      
+      modalTitle.textContent = 'Edit Task';
+      modalInput.value = loadTaskTitle(taskId, task.title);
+      modalHint.value = loadTaskHint(taskId, task.hint);
+      taskModal.classList.add('active');
+    }
+
+    function saveModalChanges() {
+      if (editingTaskId === 'new') {
+        // Add new task logic here if needed
+        taskModal.classList.remove('active');
+        return;
+      }
+      
+      const [weekId, , index] = editingTaskId.split('-');
+      const taskIndex = parseInt(index);
+      const task = cloudChallenge[weekId].tasks[taskIndex];
+      
+      saveTaskState(editingTaskId, loadTaskState(editingTaskId), modalInput.value, modalHint.value);
+      renderPlanner();
+      taskModal.classList.remove('active');
+    }
+
+    function celebrateCompletion() {
+      // Confetti effect
+      createConfetti();
+      
+      // Check if week completed
+      weeks.forEach(weekId => {
+        if (isWeekComplete(weekId)) {
+          const weekCard = document.querySelector(`[data-week="${weekId}"]`);
+          if (weekCard && !weekCard.classList.contains('complete')) {
+            weekCard.classList.add('complete');
+            showNotification(`${weekId.replace('week', 'Week ')} COMPLETED! 🎉`, 'success');
+          }
+        }
+      });
+    }
+
+    function createConfetti() {
+      const confettiColors = ['#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#8b5cf6'];
+      for (let i = 0; i < 50; i++) {
+        const confetto = document.createElement('div');
+        confetto.style.cssText = `
+          position: fixed;
+          width: 10px;
+          height: 10px;
+          background: ${confettiColors[Math.floor(Math.random() * confettiColors.length)]};
+          top: -10px;
+          left: ${Math.random() * 100}vw;
+          animation: fall ${Math.random() * 3 + 2}s linear forwards;
+          z-index: 1000;
+          border-radius: 50%;
+        `;
+        confetti.appendChild(confetto);
+        
+        setTimeout(() => {
+          confetto.remove();
+        }, 5000);
+      }
+    }
+
+    function showNotification(message, type = 'info') {
+      // Simple notification - could be enhanced with toast library
+      const notification = document.createElement('div');
+      notification.textContent = message;
+      notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+        color: white;
+        padding: 16px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        z-index: 1001;
+        animation: slideInRight 0.3s ease;
+      `;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    function filterByDay() {
+      const filterDay = dayFilter.value;
+      document.querySelectorAll('.task-item').forEach(task => {
+        task.style.display = (filterDay === 'all' || task.dataset.day === filterDay) ? 'block' : 'none';
+      });
+    }
+
+    function renderHistory() {
+      history.innerHTML = `
+        <div class="history-grid">
+          <div class="history-card">
+            <div class="history-date">📊 Overall Progress</div>
+            <div class="history-stats">
+              <div class="stat-item">
+                <div class="stat-number-small">${getTotalCompletedTasks()}</div>
+                <div>Total Tasks</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number-small">${getCurrentStreak()}</div>
+                <div>Current Streak</div>
+              </div>
+            </div>
+          </div>
+          <div class="history-card">
+            <div class="history-date">📅 Study Consistency</div>
+            <div class="history-stats">
+              <div class="stat-item">
+                <div class="stat-number-small">${getTotalStudyDays()}</div>
+                <div>Active Days</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number-small">${Math.round(getTotalCompletedTasks() / getTotalStudyDays() || 0)}</div>
+                <div>Tasks/Day Avg</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      
+      clockDate.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+      const timeStr = now.toLocaleTimeString('en-IN', { 
+        hour12: true, 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+      });
+      clockTime.textContent = `${timeStr} IST`;
+    }
+
+    function attachEventListeners() {
+      studyDate.addEventListener('change', () => {
+        renderPlanner();
+        checkStreak();
+      });
+      
+      dayFilter.addEventListener('change', filterByDay);
+
+      editModeBtn.addEventListener('click', () => {
+        editMode = !editMode;
+        editModeBtn.textContent = editMode ? '✅ Edit Mode (ON)' : '✏️ Study Mode';
+        editModeBtn.classList.toggle('active', editMode);
+        document.querySelectorAll('.task-title').forEach(title => {
+          title.contentEditable = editMode;
+          title.classList.toggle('editing', editMode);
+        });
+      });
+
+      // Navigation
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.page).classList.add('active');
+          
+          if (btn.dataset.page === 'planner') {
+            renderPlanner();
+          } else {
+            renderHistory();
+          }
+        });
+      });
+
+      // Modal events
+      modalCancel.addEventListener('click', () => {
+        taskModal.classList.remove('active');
+      });
+
+      modalSave.addEventListener('click', saveModalChanges);
+
+      // Close modal on outside click
+      taskModal.addEventListener('click', (e) => {
+        if (e.target === taskModal) {
+          taskModal.classList.remove('active');
+        }
+      });
+    }
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
